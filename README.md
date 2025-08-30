@@ -4,7 +4,7 @@
 </div>
 
 
-<div align="center"> <img src="images/clipmpcad.png" width="60%"> </div>
+<div align="center"> <img src="images/clipmpcad.png" width="80%"> </div>
 
 <div align="justify">
 
