@@ -1,145 +1,142 @@
-<div align="center">
-<h1> ClipMPCAD: Few-Shot Anomaly Detection with LLM-Guided Prompts and Multi-Attention Fusion </h1>
-</div>
+# ClipMPCAD
 
-<div align="center">
-This is an official PyTorch implementation of our paper, "Few-Shot Anomaly Detection with LLM-Guided Prompts and Multi-Attention Fusion."
-</div>
+This is an official implementation of “Few-Shot Anomaly Detection with LLM-Guided Prompts and Multi-Attention Fusion” with PyTorch.
 
-⭐ Abstract
-Medical and industrial image anomaly detection faces challenges like limited data and privacy constraints. While pre-trained large vision-language models (VLMs) show promise, they often suffer from weak cross-modal alignment, insufficient domain-specific supervision, and poor sensitivity to fine-grained local anomalies.
+--------------------------------------------------------------------------------------------------------------------------------------
 
-To address these issues, we introduce ClipMPCAD, a CLIP-based framework for cross-domain few-shot anomaly detection (FSAD) that integrates large language model (LLM)-guided prompts and multi-attention mechanisms. Our key contributions include:
 
-Multi-Attention Driven Feature Fusion (MADFF) module: Enhances spatial-frequency awareness and channel-level attention for precise anomaly localization.
+<center><img src="images/clipmpcad.png "width="60%"></center>
 
-Multi-level Semantic Decoder (M-Decoder): Combined with Professional domain Prompts (P-Prompts)—LLM-generated, domain-adaptive textual embeddings that guide hierarchical visual-text alignment.
+**Abstract**:   Abstract. Anomaly detection in medical and industrial images often faces challenges such as limited data availability and strict privacy constraints, which hinder large-scale model training. Although pre-trained large vision-language models (VLMs) offer promise in few-shot anomaly detection (FSAD), their effectiveness is limited by weak cross-modal alignment, insufficient domain-specific supervision, and poor sensitivity to fine-grained local anomalies. To address these issues, we propose ClipMPCAD, a CLIP-based framework for cross-domain FSAD that integrates large language model (LLM)-guided prompts and multi attention mechanisms. Specifically, we introduce: (1) a Multi-Attention Driven Feature Fusion (MADFF) module that enhances spatial-frequency awareness and channel-level attention for precise localization; and (2) a Multi-level Semantic Decoder (M-Decoder) combined with Professional domain Prompts (P-Prompts)—LLM-generated, domain-adaptive textual embeddings that guide hierarchical visual-text alignment. Experiments on nine diverse datasets demonstrate the effectiveness of ClipMPCAD, achieving average classification & segmentation accuracies of 90.78% and 98.67% on medical data and 93.11% and 97.54% on industrial data, setting new benchmarks in cross-domain FSAD without additional fine-tuning.
 
-Experiments on nine diverse datasets demonstrate the effectiveness of ClipMPCAD, achieving an average classification accuracy of 90.78% and segmentation accuracy of 98.67% on medical data, and 93.11% and 97.54% on industrial data. This work sets new benchmarks in cross-domain FSAD without additional fine-tuning.
+**Keywords**: Few-Shot, Large Vision-Language Model, Anomaly Classification and Segmentation
 
-<div align="center">
-<img src="images/clipmpcad.png" width="800" alt="ClipMPCAD Architecture Diagram">
-</div>
+<center><img src="images/madff.png "width="80%"></center>
 
-🚀 Overview
-The core idea of our work is to leverage powerful large models to enhance few-shot anomaly detection. Here's a closer look at our Multi-Attention Driven Feature Fusion (MADFF) module.
+## Get Started
 
-<div align="center">
-<img src="images/madff.png" width="800" alt="MADFF Module Diagram">
-</div>
+### Environment
+- python >= 3.8.5
+- pytorch >= 1.10.0
+- torchvision >= 0.11.1
+- numpy >= 1.19.2
+- scipy >= 1.5.2
+- kornia >= 0.6.1
+- pandas >= 1.1.3
+- opencv-python >= 4.5.4
+- pillow
+- tqdm
+- ftfy
+- regex
 
-🛠️ Getting Started
-This section will guide you through setting up the environment, preparing datasets, and running the code.
+### Device
+Single NVIDIA A40 GPU
 
-1. Environment Setup
-Our code is built on a single NVIDIA A40 GPU. To get started, make sure you have the following dependencies installed:
+### Pretrained model
+- CLIP: https://openaipublic.azureedge.net/clip/models/3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02/ViT-L-14-336px.pt
 
-python >= 3.8.5
-pytorch >= 1.10.0
-torchvision >= 0.11.1
-numpy >= 1.19.2
-scipy >= 1.5.2
-kornia >= 0.6.1
-pandas >= 1.1.3
-opencv-python >= 4.5.4
-pillow
-tqdm
-ftfy
-regex
-2. Pretrained Model
-Download the pretrained CLIP model and place it in the CLIP/ckpt folder.
+    Download and put it under `CLIP/ckpt` folder
 
-<p style="padding-left: 20px;">
-<a href="https://openaipublic.azureedge.net/clip/models/3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02/ViT-L-14-336px.pt" target="_blank">ViT-L-14-336px.pt</a>
-</p>
 
-3. Prepare Datasets
-The benchmark we used can be found here. We also provide pre-processed versions of the datasets for your convenience.
 
-Download the following datasets and place them within the master directory data, then unzip them.
+### Medical and Industrial Anomaly Detection Benchmark
 
-Liver
+1. (optional) Follow the [BMAD](https://github.com/DorisBao/BMAD) to apply for permission to download the relevant dataset. 
+2. We will provide the pre-processed benchmark. Please download the following dataset
 
-Brain
+    * Liver: ----------------------------------------------------------------------------------
+    * Brain: ----------------------------------------------------------------------------------
+    * HIS: ----------------------------------------------------------------------------------
+    * RESC: ----------------------------------------------------------------------------------
+    * OCT17: ----------------------------------------------------------------------------------
+    * ChestXray: ----------------------------------------------------------------------------------
+    * Mvtec-AD: ----------------------------------------------------------------------------------
+    * MPDD: ----------------------------------------------------------------------------------
+    * BTAD: ----------------------------------------------------------------------------------
 
-HIS
+3. Place it within the master directory `data` and unzip the dataset.
 
-RESC
+    ```
+    tar -xvf Liver.tar.gz
+    tar -xvf Brain.tar.gz
+    tar -xvf Histopathology_AD.tar.gz
+    tar -xvf Retina_RESC.tar.gz
+    tar -xvf Retina_OCT2017.tar.gz
+    tar -xvf Chest.tar.gz
+    tar -xvf Mvtec.tar.gz
+    tar -xvf MPDD.tar.gz
+    tar -xvf BTAD.tar.gz
+    ```
 
-OCT17
 
-ChestXray
+### File Structure
+After the preparation work, the whole project should have the following structure:
 
-Mvtec-AD
-
-MPDD
-
-BTAD
-
-Bash
-
-tar -xvf Liver.tar.gz
-tar -xvf Brain.tar.gz
-tar -xvf Histopathology_AD.tar.gz
-tar -xvf Retina_RESC.tar.gz
-tar -xvf Retina_OCT2017.tar.gz
-tar -xvf Chest.tar.gz
-tar -xvf Mvtec.tar.gz
-tar -xvf MPDD.tar.gz
-tar -xvf BTAD.tar.gz
-4. File Structure
-After the preparation work, your project structure should look like this:
-
+```
 code
 ├─ ckpt
-│  ├─ few-shot
-│  └─ zero-shot
+│  ├─ few-shot
+│  └─ zero-shot
 ├─ CLIP
-│  ├─ bpe_simple_vocab_16e6.txt.gz
-│  ├─ ckpt
-│  │  └─ ViT-L-14-336px.pt
-│  ├─ ...
+│  ├─ bpe_simple_vocab_16e6.txt.gz
+│  ├─ ckpt
+│  │  └─ ViT-L-14-336px.pt
+│  ├─ clip.py
+│  ├─ model.py
+│  ├─ models.py
+│  ├─ model_configs
+│  │  └─ ViT-L-14-336.json
+│  ├─ modified_resnet.py
+│  ├─ openai.py
+│  ├─ tokenizer.py
+│  └─ transformer.py
 ├─ data
-│  ├─ Brain_AD
-│  └─ ...
+│  ├─ Brain_AD
+│  │  ├─ valid
+│  │  └─ test
+│  ├─ ...
+│  └─ Retina_RESC_AD
+│     ├─ valid
+│     └─ test
 ├─ dataset
-│  ├─ fewshot_seed
-│  └─ ...
+│  ├─ fewshot_seed
+│  │  ├─ Brain
+│  │  ├─ ...
+│  │  └─ Retina_RESC
+│  ├─ medical_few.py
+│  └─ medical_zero.py
 ├─ loss.py
 ├─ prompt.py
 ├─ readme.md
 ├─ train_few.py
 ├─ train_zero.py
 └─ utils.py
-🚀 Quick Start
-To test on a specific dataset with a few-shot number, use the test_few.py script.
 
-Bash
+```
 
-python test_few.py --obj $target-object --shot $few-shot-number
-For example, to test on the Brain MRI dataset with k=4, simply run:
 
-Bash
+### Quick Start
 
-python test_few.py --obj Brain --shot 4
-To train the model, use the train_few.py script.
+`python test_few.py --obj $target-object --shot $few-shot-number`
 
-Bash
+For example, to test on the Brain MRI with k=4, simply run:
 
-python train_few.py --obj $target-object --shot $few-shot-number
-🖼️ Visualization
-Here are some visual results from our model, showcasing its ability to accurately detect and segment anomalies.
+`python test_few.py --obj Brain --shot 4`
 
-<div align="center">
-<img src="images/visual.png" width="800" alt="Visualization of Results">
-</div>
+### Training
 
-🤝 Acknowledgement
-We are grateful to the authors of the following projects, as we have borrowed some code from their work.
+`python train_few.py --obj $target-object --shot $few-shot-number`
 
-OpenCLIP
 
-April-GAN
 
-📧 Contact
-If you have any questions, feel free to contact us.
+
+## Visualization
+<center><img src="images/visual.png "width="70%"></center>
+
+## Acknowledgement
+We borrow some codes from [OpenCLIP](https://github.com/mlfoundations/open_clip), and [April-GAN](https://github.com/ByChelsea/VAND-APRIL-GAN).
+
+## Contact
+
+If you have any problem with this code, please feel free to contact **** and ****.
+
