@@ -18,7 +18,7 @@ Anomaly detection in medical and industrial images often faces challenges such a
 <div align="center"> <img src="images/madff.png " width="60%"> </div>
 
 
-## Get Started
+## 🚀 Get Started
 
 ⚙️ Environment
 - python >= 3.8.5
