@@ -77,7 +77,7 @@ Single NVIDIA A40 GPU
     ```
 
 
-### File Structure
+###📂 File Structure
 After the preparation work, the whole project should have the following structure:
 
 ```
