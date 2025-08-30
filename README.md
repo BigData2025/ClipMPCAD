@@ -1,6 +1,11 @@
-# ClipMPCAD
+<div align="center">
+<h1> ClipMPCAD: Few-Shot Anomaly Detection with LLM-Guided Prompts and Multi-Attention Fusion </h1>
+</div>
 
-This is an official implementation of “Few-Shot Anomaly Detection with LLM-Guided Prompts and Multi-Attention Fusion” with PyTorch.
+<div align="center">
+This is an official PyTorch implementation of our paper, "Few-Shot Anomaly Detection with LLM-Guided Prompts and Multi-Attention Fusion."
+</div>
+
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
