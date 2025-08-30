@@ -15,8 +15,8 @@ Anomaly detection in medical and industrial images often faces challenges such a
 
 📴**Keywords**: Few-Shot, Large Vision-Language Model, Anomaly Classification and Segmentation
 
+<div align="center"> <img src="images/madff.png " width="60%"> </div>
 
-<center><img src="images/madff.png "width="80%"></center>
 
 ## Get Started
 
