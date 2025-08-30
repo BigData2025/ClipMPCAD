@@ -37,14 +37,14 @@ Anomaly detection in medical and industrial images often faces challenges such a
 ### Device
 Single NVIDIA A40 GPU
 
-📦 Pretrained model
+## 📦 Pretrained model
 - CLIP: https://openaipublic.azureedge.net/clip/models/3035c92b350959924f9f00213499208652fc7ea050643e8b385c2dac08641f02/ViT-L-14-336px.pt
 
     👉 Download and put it under `CLIP/ckpt` folder
 
 
 
-### Medical and Industrial Anomaly Detection Benchmark
+##  Medical and Industrial Anomaly Detection Benchmark
 
 1. (optional) Follow the [BMAD](https://github.com/DorisBao/BMAD) to apply for permission to download the relevant dataset. 
 2. We will provide the pre-processed benchmark. Please download the following dataset
@@ -74,7 +74,7 @@ Single NVIDIA A40 GPU
     ```
 
 
-📂 File Structure
+## 📂 File Structure
 After the preparation work, the whole project should have the following structure:
 
 ```
@@ -120,7 +120,7 @@ code
 ```
 
 
-⚡ Quick Start
+## ⚡ Quick Start
 
 `python test_few.py --obj $target-object --shot $few-shot-number`
 
@@ -135,13 +135,13 @@ For example, to test on the Brain MRI with k=4, simply run:
 
 
 
-🖼️ Visualization
+## 🖼️ Visualization
 <center><img src="images/visual.png "width="70%"></center>
 
-🙏 Acknowledgement
+## 🙏 Acknowledgement
 We borrow some codes from [OpenCLIP](https://github.com/mlfoundations/open_clip), and [April-GAN](https://github.com/ByChelsea/VAND-APRIL-GAN).
 
-📬 Contact
+## 📬 Contact
 
 If you have any problem with this code, please feel free to contact **** and ****.
 
